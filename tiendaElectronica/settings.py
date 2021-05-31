@@ -76,9 +76,16 @@ WSGI_APPLICATION = 'tiendaElectronica.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': '192.168.0.17:1521/XE',
+        'USER':'c##prueba',
+        'PASSWORD':'prueba',
+        'TEST':{
+            'USER':'default_test',
+            'TBLSPACE':'default_test_tbls',
+            'TBLSPACE_TMP':'default_test_tbls_tmp',
+        },
+    },
 }
 
 
