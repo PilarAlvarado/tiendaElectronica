@@ -6,8 +6,6 @@ User = get_user_model()
 
 
 class Category(models.Model):
-    idCategoria = models.IntegerField(
-        primary_key=True, verbose_name='idCategoria')
     name = models.CharField(max_length=100)
 
     class Meta:
@@ -32,7 +30,6 @@ class SizeVariation(models.Model):
 
 
 class Product(models.Model):
-    idProduct = models.IntegerField(primary_key=True, verbose_name='idProduct')
     title = models.CharField(max_length=150)
     slug = models.SlugField(unique=True)
     image = models.ImageField(upload_to='venta/img')

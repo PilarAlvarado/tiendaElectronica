@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from .models import Category, Product
-from .forms import ProductForm, CategoryForm
 
 
 def home(request):
