@@ -1,5 +1,6 @@
 from django.shortcuts import render
-# aqui solo van funciones
+from .models import Category, Product
+from .forms import ProductForm, CategoryForm
 
 
 def home(request):
@@ -8,6 +9,14 @@ def home(request):
 
 def cart(request):
     return render(request, 'venta/cart.html')
+
+
+def category(request):
+    ListCategory = Category.objects.all()
+    datos = {
+        'Category': ListCategory
+    }
+    return render(request, 'venta/category.html', datos)
 
 
 def checkout(request):
@@ -23,16 +32,46 @@ def login(request):
 
 
 def account(request):
-    return render(request, 'venta/my-account.html')
+    return render(request, 'venta/account.html')
 
 
 def productDet(request):
-    return render(request, 'venta/product-detail.html')
+    return render(request, 'venta/product-det.html')
 
 
 def productList(request):
-    return render(request, 'venta/product-list.html')
+    productList = Product.objects.all()
+    datos = {
+        'Product': productList
+    }
+    return render(request, 'venta/product-list.html', datos)
 
 
 def wishlist(request):
     return render(request, 'venta/wishlist.html')
+
+
+def form_producto(request):
+    datos = {
+        'form': ProductForm()
+    }
+
+    if (request.method == 'POST'):
+        formulario = ProductForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = 'Guardado'
+        return render(request, 'formulario/form_producto.html', datos)
+
+
+def form_category(request):
+    datos = {
+        'form': CategoryForm()
+    }
+
+    if (request.method == 'POST'):
+        formulario = CategoryForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            datos['mensaje'] = 'Guardado'
+        return render(request, 'formulario/form_category.html', datos)

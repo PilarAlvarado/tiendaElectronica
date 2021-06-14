@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'tiendaElectronica.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': '127.0.0.1:1521/orcl',
-        'USER': 'django',
-        'PASSWORD': 'django',
+        'NAME': '127.0.0.1:1521/XE',
+        'USER': 'SYSTEM',
+        'PASSWORD': 'Oracle18c',
         'TEST': {
             'USER': 'default_test',
             'TBLSPACE': 'default_test_tbls',
