@@ -49,29 +49,3 @@ def productList(request):
 
 def wishlist(request):
     return render(request, 'venta/wishlist.html')
-
-
-def form_producto(request):
-    datos = {
-        'form': ProductForm()
-    }
-
-    if (request.method == 'POST'):
-        formulario = ProductForm(request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            datos['mensaje'] = 'Guardado'
-        return render(request, 'formulario/form_producto.html', datos)
-
-
-def form_category(request):
-    datos = {
-        'form': CategoryForm()
-    }
-
-    if (request.method == 'POST'):
-        formulario = CategoryForm(request.POST)
-        if formulario.is_valid():
-            formulario.save()
-            datos['mensaje'] = 'Guardado'
-        return render(request, 'formulario/form_category.html', datos)
