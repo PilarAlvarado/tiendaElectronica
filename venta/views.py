@@ -6,6 +6,10 @@ def home(request):
     return render(request, 'venta/index.html')
 
 
+def admin(request):
+    return render(request, 'venta/admin.html')
+
+
 def cart(request):
     return render(request, 'venta/cart.html')
 
