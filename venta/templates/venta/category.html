@@ -119,13 +119,23 @@
     </div>
     <!-- Bottom Bar End -->
 
-    <!-- Category Start -->
+    <!-- Product List Start -->
     <div class="product-view">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-log-8">
+                <div class="col-lg-8">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
+                            <div class="product-view-top">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2> Categorias </h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
                             <div class="product-item">
                                 <div class="product-title">
                                     <a href="#">Celulares</a>
@@ -137,7 +147,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="product-item">
                                 <div class="product-title">
                                     <a href="#">Juegos & Consolas</a>
@@ -149,7 +159,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="product-item">
                                 <div class="product-title">
                                     <a href="#">Computadores & Tablets</a>
@@ -161,7 +171,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="product-item">
                                 <div class="product-title">
                                     <a href="#">TV & Smart Tv</a>
@@ -173,7 +183,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="product-item">
                                 <div class="product-title">
                                     <a href="#">Accessorios</a>
@@ -185,7 +195,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="product-item">
                                 <div class="product-title">
                                     <a href="#">Línea Hogar</a>
@@ -198,8 +208,25 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Pagination Start -->
+                    <div class="col-md-12">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Antes</a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Después</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Pagination Start -->
                 </div>
-                <!-- Category End -->
+
                 <!-- Side Bar Start -->
                 <div class="col-lg-4 sidebar">
                     <div class="sidebar-widget category">
@@ -223,6 +250,89 @@
                                 </li>
                             </ul>
                         </nav>
+                    </div>
+
+                    <div class="sidebar-widget widget-slider">
+                        <div class="sidebar-slider normal-slider">
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a href="#">Producto</a>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="product-image">
+                                    <a href="{% url 'productDet' %}">
+                                        <img src="{% static 'venta/img/product-7.jpg'%}" alt="Product Image">
+                                    </a>
+                                    <div class="product-action">
+                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="#"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <h3><span>$</span>990</h3>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a href="#">Producto</a>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="product-image">
+                                    <a href="{% url 'productDet' %}">
+                                        <img src="{% static 'venta/img/product-7.jpg'%}" alt="Product Image">
+                                    </a>
+                                    <div class="product-action">
+                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="#"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <h3><span>$</span>990</h3>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
+                                </div>
+                            </div>
+                            <div class="product-item">
+                                <div class="product-title">
+                                    <a href="#">Producto</a>
+                                    <div class="ratting">
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="product-image">
+                                    <a href="{% url 'productDet' %}">
+                                        <img src="{% static 'venta/img/product-7.jpg'%}" alt="Product Image">
+                                    </a>
+                                    <div class="product-action">
+                                        <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                        <a href="#"><i class="fa fa-heart"></i></a>
+                                        <a href="#"><i class="fa fa-search"></i></a>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <h3><span>$</span>990</h3>
+                                    <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Comprar</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="sidebar-widget brands">
@@ -253,10 +363,12 @@
                         <a href="#">Nam lorem</a>
                     </div>
                 </div>
+                <!-- Side Bar End -->
             </div>
         </div>
     </div>
     <!-- Product List End -->
+
     <!-- Footer Start -->
     <div class="footer">
         <div class="container-fluid">
