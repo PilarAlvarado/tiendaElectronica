@@ -6,10 +6,6 @@ def home(request):
     return render(request, 'venta/index.html')
 
 
-def admin(request):
-    return render(request, 'venta/admin.html')
-
-
 def cart(request):
     return render(request, 'venta/cart.html')
 
@@ -48,6 +44,10 @@ def productList(request):
         'Product': productList
     }
     return render(request, 'venta/product-list.html', datos)
+
+
+def viewAdmin(request):
+    return render(request, 'venta/vista-admin.html')
 
 
 def wishlist(request):
