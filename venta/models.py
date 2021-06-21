@@ -40,8 +40,7 @@ class Product(models.Model):
     active = models.BooleanField(default=False)
     available_colours = models.ManyToManyField(ColourVariation)
     available_sizes = models.ManyToManyField(SizeVariation)
-    primary_category = models.ForeignKey(
-        Category, related_name='primary_products', on_delete=models.CASCADE)
+    primary_category = models.ForeignKey(Category, related_name='primary_products', on_delete=models.CASCADE)
     secondary_categories = models.ManyToManyField(Category, blank=True)
     stock = models.IntegerField(default=0)
 
