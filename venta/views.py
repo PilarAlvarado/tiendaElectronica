@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Category, Product
+from .forms import ProductForm, CategoryForm
 
 
 def home(request):
@@ -13,7 +14,7 @@ def cart(request):
 def category(request):
     ListCategory = Category.objects.all()
     datos = {
-        'Category': ListCategory
+        'Categoria': ListCategory
     }
     return render(request, 'venta/category.html', datos)
 
@@ -31,7 +32,7 @@ def login(request):
 
 
 def account(request):
-    return render(request, 'venta/account.html')
+    return render(request, 'venta/my-account.html')
 
 
 def productDet(request):
@@ -41,7 +42,7 @@ def productDet(request):
 def productList(request):
     productList = Product.objects.all()
     datos = {
-        'Product': productList
+        'Producto': productList
     }
     return render(request, 'venta/product-list.html', datos)
 
@@ -52,3 +53,39 @@ def viewAdmin(request):
 
 def wishlist(request):
     return render(request, 'venta/wishlist.html')
+
+
+def venProduct(request):
+    datos = {
+        'vProd': ProductForm()
+    }
+
+    if(request.method == 'POST'):
+        venta = ProductForm(request.POST)
+        if venta.is_valid():
+            venta.save()
+            datos['mensaje'] = 'Guardados correctamente'
+    return render(request, 'venta/ven_product.html', datos)
+
+
+def venModProduct(request):
+    Producto = Product.objects.get()
+
+    datos = {
+        'Producto': ProductForm(instance=Product)
+    }
+
+    if(request.method == 'POST'):
+        venta = ProductForm(data=request.POST, instance=Product)
+        if venta.is_valid():
+            venta.save()
+            datos['mensaje'] = 'Modificados correctamente'
+
+    return render(request, 'venta/ven-mod-product.html', datos)
+
+
+def venDelProduct(request, id):
+    Producto = Product.objects.get()
+    Product.delete()
+
+    return redirect(to='vista-admin')

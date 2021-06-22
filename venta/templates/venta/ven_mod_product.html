@@ -93,39 +93,22 @@
         </div>
     </div>
     <!-- Bottom Bar End -->
+    <div class="row">
+        <form method="post" action="" id="formulario">
+            {% csrf_token %}
 
-    <section class="container-fluid">
-        <table border="1">Lista de Vehículos
-            <tr>
-                <th>Nombre producto</th>
-                <th>Imagen producto</th>
-                <th>Precio producto</th>
-                <th>Descripción producto</th>
+            <div class="form_group">
+                {{ form.as_table }}
 
-                <th scope="col">Agregar</th>
-                <th scope="col">Modificar</th>
-                <th scope="col">Eliminar</th>
-            </tr>
-            {% for prod in Product %}
-            <tr>
-                <td>{{prod.title}}</td>
-                <td>{{prod.image}}</td>
-                <td>{{prod.price}}</td>
-                <td>{{prod.descritption}}</td>
-                <td>
-                    <a href="{% url 'ven-mod-product' prod.title %}"><img src="{% static 'venta/img/modificar.png' %}" alt=""></a>
-                </td>
-                <td>
-                    <a href="{% url 'del-product' prod.title %}"><img src="{% static 'venta/img/borrar.png' %}" alt=""></a>
-                </td>
-            </tr>
-            {% endfor %}
+            </div>
+            <input type="submit" class="btn btn-danger" id="enviar" value="Modificar">
+            <input type="reset" class="btn btn-primary" id="limnpiar" value="Limpiar">
+            <div id="error" class="alert alert-success" role="alert">
+                {{ mensaje }}
+            </div>
+        </form>
+    </div>
 
-        </table>
-        <div>
-            <a class="mas" href="{% url 'ven-product' %}">+</a>
-        </div>
-    </section>
 
     <!-- Footer Start -->
     <div class="footer">
