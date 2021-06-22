@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Category, Product
-from .forms import ProductForm, CategoryForm
+from .forms import ProductForm
 
 
 def home(request):
@@ -12,9 +12,9 @@ def cart(request):
 
 
 def category(request):
-    ListCategory = Category.objects.all()
+    listCategory = Category.objects.all()
     datos = {
-        'Categoria': ListCategory
+        'Categoria': listCategory
     }
     return render(request, 'venta/category.html', datos)
 
@@ -36,7 +36,7 @@ def account(request):
 
 
 def productDet(request):
-    return render(request, 'venta/product-det.html')
+    return render(request, 'venta/product-detail.html')
 
 
 def productList(request):
@@ -45,19 +45,22 @@ def productList(request):
         'Producto': productList
     }
     return render(request, 'venta/product-list.html', datos)
+##########################vista admi############################################
 
 
 def viewAdmin(request):
-    return render(request, 'venta/vista-admin.html')
-
-
-def wishlist(request):
-    return render(request, 'venta/wishlist.html')
-
-
-def venProduct(request):
+    productList = Product.objects.all()
     datos = {
-        'vProd': ProductForm()
+        'productos': productList,
+    }
+    return render(request, 'venta/vista-admin.html', datos)
+
+##################guardar############################################
+
+
+def ven_Product(request):
+    datos = {
+        'form': ProductForm()
     }
 
     if(request.method == 'POST'):
@@ -67,25 +70,32 @@ def venProduct(request):
             datos['mensaje'] = 'Guardados correctamente'
     return render(request, 'venta/ven_product.html', datos)
 
+####################modificar############################################
 
-def venModProduct(request):
-    Producto = Product.objects.get()
 
+def ven_Mod_Product(request, Id):
+    product = Product.objects.get(Idproducto=Id)
     datos = {
-        'Producto': ProductForm(instance=Product)
+        'form': ProductForm(instance=product)
     }
 
     if(request.method == 'POST'):
-        venta = ProductForm(data=request.POST, instance=Product)
+        venta = ProductForm(data=request.POST, instance=product)
         if venta.is_valid():
             venta.save()
             datos['mensaje'] = 'Modificados correctamente'
 
     return render(request, 'venta/ven-mod-product.html', datos)
 
+###################Eliminar#################################################
 
-def venDelProduct(request, id):
-    Producto = Product.objects.get()
-    Product.delete()
 
-    return redirect(to='vista-admin')
+def ven_Del_Product(request, Id):
+    product = Product.objects.get(Idproducto=Id)
+    product.delete()
+
+    return redirect(to='venta/vista-admin.html')
+
+
+def wishlist(request):
+    return render(request, 'venta/wishlist.html')

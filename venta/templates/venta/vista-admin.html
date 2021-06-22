@@ -95,37 +95,38 @@
     <!-- Bottom Bar End -->
 
     <section class="container-fluid">
-        <table border="1">Lista de Vehículos
+        <table border="1">Lista de Productos
             <tr>
+                <th>ID producto</th>
                 <th>Nombre producto</th>
                 <th>Imagen producto</th>
                 <th>Precio producto</th>
                 <th>Descripción producto</th>
-
-                <th scope="col">Agregar</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Eliminar</th>
             </tr>
-            {% for prod in Product %}
+            {% for prod in product %}
             <tr>
+                <td>{{prod.idProducto}}</td>
                 <td>{{prod.title}}</td>
                 <td>{{prod.image}}</td>
                 <td>{{prod.price}}</td>
                 <td>{{prod.descritption}}</td>
                 <td>
-                    <a href="{% url 'ven-mod-product' prod.title %}"><img src="{% static 'venta/img/modificar.png' %}" alt=""></a>
+                    <a href="{% url 'ven_Mod_Product' prod.idProducto %}"><img src="{% static 'venta/img/modificar.png' %}" alt=""></a>
                 </td>
                 <td>
-                    <a href="{% url 'del-product' prod.title %}"><img src="{% static 'venta/img/borrar.png' %}" alt=""></a>
+                    <a href="{% url 'ven_Del_Product' prod.idProducto %}"><img src="{% static 'venta/img/borrar.png' %}" alt=""></a>
                 </td>
             </tr>
             {% endfor %}
 
         </table>
         <div>
-            <a class="mas" href="{% url 'ven-product' %}">+</a>
+            <a class="mas" href="{% url 'ven_Product' %}">+</a>
         </div>
     </section>
+
 
     <!-- Footer Start -->
     <div class="footer">

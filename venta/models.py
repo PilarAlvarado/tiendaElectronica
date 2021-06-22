@@ -1,18 +1,12 @@
 from django.db import models
-from django.contrib.auth import get_user_model
-from django.shortcuts import reverse
-
-User = get_user_model()
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
-
-    class Meta:
-        verbose_name_plural = "Categories"
+    idCategoria = models.IntegerField(primary_key=True, verbose_name='Id')
+    nombreCategoria = models.CharField(max_length=50, verbose_name='Nombre')
 
     def __str__(self):
-        return self.name
+        return self.nombreCategoria
 
 
 class ColourVariation(models.Model):
@@ -22,7 +16,7 @@ class ColourVariation(models.Model):
         return self.name
 
 
-class SizeVariation(models.Model):
+class TextureVariation(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
@@ -30,29 +24,14 @@ class SizeVariation(models.Model):
 
 
 class Product(models.Model):
-    title = models.CharField(max_length=150)
-    slug = models.SlugField(unique=True)
+    idProducto = models.IntegerField(primary_key=True, verbose_name='Id')
+    title = models.CharField(max_length=150, verbose_name='Title')
     image = models.ImageField(upload_to='venta/img')
     descritption = models.TextField()
-    price = models.IntegerField(default=0)
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
-    active = models.BooleanField(default=False)
+    price = models.IntegerField(default=0, verbose_name='Price')
     available_colours = models.ManyToManyField(ColourVariation)
-    available_sizes = models.ManyToManyField(SizeVariation)
-    primary_category = models.ForeignKey(Category, related_name='primary_products', on_delete=models.CASCADE)
-    secondary_categories = models.ManyToManyField(Category, blank=True)
-    stock = models.IntegerField(default=0)
+    available_texture = models.ManyToManyField(TextureVariation)
+    categoria = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
-
-    def get_absolute_url(self):
-        return reverse("venta:product-detail", kwargs={'slug': self.slug})
-
-    def get_price(self):
-        return "{:.2f}".format(self.price / 100)
-
-    @property
-    def in_stock(self):
-        return self.stock > 0
+        return self.idProducto + " " + self.title
