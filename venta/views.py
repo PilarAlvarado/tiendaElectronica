@@ -85,7 +85,7 @@ def ven_Mod_Product(request, Id):
             venta.save()
             datos['mensaje'] = 'Modificados correctamente'
 
-    return render(request, 'venta/ven-mod-product.html', datos)
+    return render(request, 'venta/ven_mod_product.html', datos)
 
 ###################Eliminar#################################################
 
