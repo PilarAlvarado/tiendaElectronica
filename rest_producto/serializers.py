@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from venta.models import Product
+from venta.models import ProductoP
 
 
-class ProductSerializer(serializers.ModelSerializer):
+class ProductoPSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Product
+        model = ProductoP
         fields = ['idProducto', 'title', 'image', 'descritption',
                   'price', 'available_colours', 'available_texture', 'categoria']

@@ -23,7 +23,7 @@ class TextureVariation(models.Model):
         return self.name
 
 
-class Product(models.Model):
+class ProductoP(models.Model):
     idProducto = models.IntegerField(primary_key=True, verbose_name='Id')
     title = models.CharField(max_length=150, verbose_name='title')
     image = models.ImageField(upload_to='venta/img')

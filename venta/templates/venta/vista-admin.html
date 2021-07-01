@@ -98,14 +98,14 @@
         <table border="1">Lista de Productos
             <tr>
                 <th>ID producto</th>
-                <th>Nombre producto</th>
-                <th>Imagen producto</th>
-                <th>Precio producto</th>
-                <th>Descripción producto</th>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Precio</th>
+                <th>Descripción</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Eliminar</th>
             </tr>
-            {% for prod in product %}
+            {% for prod in productos %}
             <tr>
                 <td>{{prod.idProducto}}</td>
                 <td>{{prod.title}}</td>
@@ -113,17 +113,17 @@
                 <td>{{prod.price}}</td>
                 <td>{{prod.descritption}}</td>
                 <td>
-                    <a href="{% url 'ven_Mod_Product' prod.idProducto %}"><img src="{% static 'venta/img/modificar.png' %}" alt=""></a>
+                    <a href="{% url 'ven_mod_product' prod.idProducto %}"><img src="{% static 'venta/img/modificar.png' %}" alt=""></a>
                 </td>
                 <td>
-                    <a href="{% url 'ven_Del_Product' prod.idProducto %}"><img src="{% static 'venta/img/borrar.png' %}" alt=""></a>
+                    <a href="{% url 'ven_del_product' prod.idProducto %}"><img src="{% static 'venta/img/borrar.png' %}" alt=""></a>
                 </td>
             </tr>
             {% endfor %}
 
         </table>
         <div>
-            <a class="mas" href="{% url 'ven_Product' %}">+</a>
+            <a class="mas" href="{% url 'ven_product' %}">+</a>
         </div>
         <div>
             <a href="{% url 'lista_productos' %}">API</a>

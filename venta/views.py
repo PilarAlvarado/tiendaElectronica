@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Category, Product
+from .models import ProductoP
 from .forms import ProductForm
 
 
@@ -12,11 +12,7 @@ def cart(request):
 
 
 def category(request):
-    listCategory = Category.objects.all()
-    datos = {
-        'Categoria': listCategory
-    }
-    return render(request, 'venta/category.html', datos)
+    return render(request, 'venta/category.html')
 
 
 def checkout(request):
@@ -40,27 +36,23 @@ def productDet(request):
 
 
 def productList(request):
-    productList = Product.objects.all()
-    datos = {
-        'Producto': productList
-    }
-    return render(request, 'venta/product-list.html', datos)
+    return render(request, 'venta/product-list.html')
 ##########################vista admi############################################
 
 
 def viewAdmin(request):
-    productList = Product.objects.all()
+    listaProductos = ProductoP.objects.all()
     datos = {
-        'productos': productList,
+        'product': listaProductos,
     }
     return render(request, 'venta/vista-admin.html', datos)
 
 ##################guardar############################################
 
 
-def ven_Product(request):
+def ven_product(request):
     datos = {
-        'form': ProductForm()
+        'ven': ProductForm()
     }
 
     if(request.method == 'POST'):
@@ -73,10 +65,10 @@ def ven_Product(request):
 ####################modificar############################################
 
 
-def ven_Mod_Product(request, Id):
-    product = Product.objects.get(Idproducto=Id)
+def ven_mod_product(request, id):
+    product = ProductoP.objects.get(Idproducto=id)
     datos = {
-        'form': ProductForm(instance=product)
+        'ven': ProductForm(instance=product)
     }
 
     if(request.method == 'POST'):
@@ -90,11 +82,11 @@ def ven_Mod_Product(request, Id):
 ###################Eliminar#################################################
 
 
-def ven_Del_Product(request, Id):
-    product = Product.objects.get(Idproducto=Id)
+def ven_del_product(request, id):
+    product = ProductoP.objects.get(Idproducto=id)
     product.delete()
 
-    return redirect(to='venta/vista-admin.html')
+    return redirect(to='viewAdmin')
 
 
 def wishlist(request):

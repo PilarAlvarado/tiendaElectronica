@@ -4,20 +4,20 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
-from venta.models import Product
-from .serializers import ProductSerializer
+from venta.models import ProductoP
+from .serializers import ProductoPSerializer
 
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
 def lista_productos(request):
     if request.method == 'GET':
-        producto = Product.objects.all()
-        serializer = ProductSerializer(producto, many=True)
+        producto = ProductoP.objects.all()
+        serializer = ProductoPSerializer(producto, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
         data = JSONParser().parse(request)
-        serializer = ProductSerializer(data=data)
+        serializer = ProductoPSerializer(data=data)
         if(serializer.is_valid()):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -28,15 +28,16 @@ def lista_productos(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 def detalle_producto(request, id):
     try:
-        producto = Product.objects.get(idProducto=id)
-    except Product.DoesNotExist:
+        producto = ProductoP.objects.get(idProducto=id)
+    except ProductoP.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
     if request.method == 'GET':
-        serializer = ProductSerializer(producto)
+        serializer = ProductoPSerializer(producto)
         return Response(serializer.data)
     if request.method == 'PUT':
         data = JSONParser().parse(request)
-        serializer = ProductSerializer(producto, data=data)
+        serializer = ProductoPSerializer(producto, data=data)
         if(serializer.is_valid()):
             serializer.save()
             return Response(serializer.data)

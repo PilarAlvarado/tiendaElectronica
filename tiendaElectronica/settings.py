@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'venta',
     'rest_framework',
+    'venta',
     'rest_producto',
 ]
 
@@ -80,8 +80,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/XE',
-        'USER': 'SYSTEM',
-        'PASSWORD': 'Oracle18c',
+        'USER': 'TIENELECT',
+        'PASSWORD': '123',
         'TEST': {
             'USER': 'default_test',
             'TBLSPACE': 'default_test_tbls',
