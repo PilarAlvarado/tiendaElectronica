@@ -252,3 +252,36 @@ password.onchange = validatePassword;
 confirm_password.onkeyup = validatePassword;
 
 // api
+
+$(document).ready(function() {
+    alert("paso1");
+    $.getJSON("http://127.0.0.1:8000/api/lista-productos", function(data) {
+        console.log(data);
+        var productos = data;
+
+        $("#idProducto").html(productos.idProducto);
+        $("#title").html(productos.title);
+        $("#image").html(productos.image);
+        $("#price").html(productos.price);
+        $("#descritption").html(productos.descritption);
+        $("#categoria").html(productos.categoria);
+    }).fail(function() {
+        console.log("Error al consumir la API!");
+    });
+});
+
+//Google
+
+function onSignIn(googleUser) {
+    var profile = googleUser.getBasicProfile();
+    console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+    console.log("Name: " + profile.getName());
+    console.log("Image URL: " + profile.getImageUrl());
+    console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+
+function onSignIn(googleUser) {
+    var id_token = googleUser.getAuthResponse().id_token;
+}
+
+// aqui ya me perdi

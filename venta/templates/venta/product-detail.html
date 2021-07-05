@@ -57,7 +57,7 @@
                     <div class="navbar-nav mr-auto">
                         <a href="{% url 'home' %}" class="nav-item nav-link active">Inicio</a>
                         <a href="{% url 'productList' %}" class="nav-item nav-link">Productos</a>
-                        <a href="{% url 'productDet' %}" class="nav-item nav-link">Detalles</a>
+                        <a href="{% url 'category' %}" class="nav-item nav-link">Categorias</a>
                         <a href="{% url 'cart' %}" class="nav-item nav-link">Carro</a>
                         <a href="{% url 'checkout' %}" class="nav-item nav-link">Pagos</a>
                         <a href="{% url 'account' %}" class="nav-item nav-link">Mi cuenta</a>
@@ -76,6 +76,7 @@
                             <div class="dropdown-menu">
                                 <a href="{% url 'login' %}" class="dropdown-item">Acceso</a>
                                 <a href="{% url 'login' %}" class="dropdown-item">Registro</a>
+                                <a href="{% url 'viewAdmin' %}" class="dropdown-item">Administración</a>
                             </div>
                         </div>
                     </div>

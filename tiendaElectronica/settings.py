@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_producto',
     'venta',
 ]
 
@@ -68,6 +71,12 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
+
 WSGI_APPLICATION = 'tiendaElectronica.wsgi.application'
 
 
@@ -77,13 +86,13 @@ WSGI_APPLICATION = 'tiendaElectronica.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': '192.168.0.17:1521/XE',
-        'USER':'c##prueba',
-        'PASSWORD':'prueba',
-        'TEST':{
-            'USER':'default_test',
-            'TBLSPACE':'default_test_tbls',
-            'TBLSPACE_TMP':'default_test_tbls_tmp',
+        'NAME': '127.0.0.1:1521/XE',
+        'USER': 'TIENELECT',
+        'PASSWORD': '123',
+        'TEST': {
+            'USER': 'default_test',
+            'TBLSPACE': 'default_test_tbls',
+            'TBLSPACE_TMP': 'default_test_tbls_tmp',
         },
     },
 }
