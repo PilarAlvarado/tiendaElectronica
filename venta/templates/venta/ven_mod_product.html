@@ -93,23 +93,25 @@
         </div>
     </div>
     <!-- Bottom Bar End -->
+    <section class="container-fluid">
+        <div class="col-md-6">
+            <div class="row">
+                <form method="POST" action="" id="venta">
+                    {% csrf_token %}
 
-    <div class="row">
-        <form method="POST" action="" id="venta">
-            {% csrf_token %}
+                    <div class="form_group">
+                        {{ form.as_table }}
 
-            <div class="form_group">
-                {{ form.as_table }}
-
+                    </div>
+                    <input type="submit" class="btn btn-danger" id="enviar" value="Modificar">
+                    <input type="reset" class="btn btn-primary" id="limnpiar" value="Limpiar">
+                    <div id="error" class="alert alert-success" role="alert">
+                        {{ mensaje }}
+                    </div>
+                </form>
             </div>
-            <input type="submit" class="btn btn-danger" id="enviar" value="Modificar">
-            <input type="reset" class="btn btn-primary" id="limnpiar" value="Limpiar">
-            <div id="error" class="alert alert-success" role="alert">
-                {{ mensaje }}
-            </div>
-        </form>
-    </div>
-
+        </div>
+    </section>
 
     <!-- Footer Start -->
     <div class="footer">

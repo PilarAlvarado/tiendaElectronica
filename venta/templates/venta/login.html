@@ -9,6 +9,7 @@
     <meta name="description" content="Tecnologia y Electronicos, pagina para comprar tecnologia electronica" />
     <meta name="keywords" content="electronica, electrodomesticos, tecnologia, celulares, computadores, notebook, audifonos" />
     <meta name="author" content="Pilar Alvarado" />
+    <meta name="google-signin-client_id" content="457106093372-g1aieqj8lsqjvlq56gbpg9ad98smpkju.apps.googleusercontent.com">
     <title>TecnoHouse</title>
 
     <!-- Favicon -->
@@ -125,6 +126,54 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6">
+                    <div class="login-form">
+                        <form action="" class="needs-validation" novalidate>
+                            <h2>Iniciar sesión</h2>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>E-mail/Usuario</label>
+                                    <input class="form-control" name="email" type="email" required placeholder="E-mail / Usuario">
+                                    <div class="valid-feedback">E-mail válido.</div>
+                                    <div class="invalid-feedback">Escribe tu e-mail (Uso de @ requerido)</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Contraseña</label>
+                                    <input class="form-control" name="contra" type="password" minlength="5" maxlength="20" required placeholder="Contraseña">
+                                    <div class="valid-feedback">Contraseña válida</div>
+                                    <div class="invalid-feedback">Escribe tu contraseña (Mínimo 5 caracteres. Máximo 20 caracteres) </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" name="recordar" id="newaccount">
+                                        <label class="custom-control-label" for="newaccount">Recordarme</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="submit" class="btn"></input>
+                                </div>
+                                <div class="col-md-12">
+                                    <hr>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <a class="btn" href="#" onclick="signOut();">Sign out</a>
+                                    <script>
+                                        function signOut() {
+                                            var auth2 = gapi.auth2.getAuthInstance();
+                                            auth2.signOut().then(function() {
+                                                console.log('User signed out.');
+                                            });
+                                        }
+                                    </script>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
                     <div class="register-form">
                         <form action="" class="needs-validation" novalidate>
                             <h2>Crear cuenta de usuario</h2>
@@ -172,42 +221,12 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="login-form">
-                        <form action="" class="needs-validation" novalidate>
-                            <h2>Iniciar sesión</h2>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>E-mail/Usuario</label>
-                                    <input class="form-control" name="email" type="email" required placeholder="E-mail / Usuario">
-                                    <div class="valid-feedback">E-mail válido.</div>
-                                    <div class="invalid-feedback">Escribe tu e-mail (Uso de @ requerido)</div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Contraseña</label>
-                                    <input class="form-control" name="contra" type="password" minlength="5" maxlength="20" required placeholder="Contraseña">
-                                    <div class="valid-feedback">Contraseña válida</div>
-                                    <div class="invalid-feedback">Escribe tu contraseña (Mínimo 5 caracteres. Máximo 20 caracteres) </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="recordar" id="newaccount">
-                                        <label class="custom-control-label" for="newaccount">Recordarme</label>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="submit" class="btn"></input>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
             </div>
             </form>
         </div>
     </div>
-    <!-- Login End -->
 
+    <!-- Login End -->
 
     <!-- Footer Start -->
     <div class="footer">
@@ -284,6 +303,7 @@
 
 
     <!-- Libraries -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
