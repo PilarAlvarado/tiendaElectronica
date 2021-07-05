@@ -117,18 +117,18 @@
                 <td>{{prod.categoria}}
                     <td>
                         <a href="{% url 'ven_mod_product' prod.idProducto %}">
-                            <img src="{% static 'venta/img/modificar.png' %}" alt="">
+                            <img src="{% static 'venta/img/modificar.png' %}" alt="mod">
                         </a>
                     </td>
                     <td>
                         <a href="{% url 'ven_del_product' prod.idProducto %}">
-                            <img src="{% static 'venta/img/borrar.png' %}" alt="">
+                            <img src="{% static 'venta/img/borrar.png' %}" alt="del">
                         </a>
                     </td>
             </tr>
             {% endfor %}
-
         </table>
+
         <div>
             {% if request.user.is_authenticated and user.username == "admin" %}
             <a class="mas" href="{% url 'ven_product' %}">+</a> {% endif %}
@@ -142,7 +142,9 @@
                 <div class="col-md-6">
                     <h4>Lista de la API</h4>
                 </div>
-                <div class="col-md-6"><button type="button" id="buscarProductos">Buscador</button></div>
+                <div class="col-md-6">
+                    <button type="button" id="buscarProductos">Buscador</button>
+                </div>
                 <div class="col-md-6">
                     <p id="fecha"></p>
                 </div>
