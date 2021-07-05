@@ -96,58 +96,46 @@
 
     <section class="container-fluid">
         <table border="1">Lista de Productos
-            <tr>
-                <th>ID producto</th>
-                <th>Nombre</th>
-                <th>Imagen</th>
-                <th>Precio</th>
-                <th>Descripción</th>
-                <th>categoria</th>
-
-                <th scope="col">Modificar</th>
-                <th scope="col">Eliminar</th>
-            </tr>
-            {% for prod in productos %}
-            <tr>
-                <td>{{prod.idProducto}}</td>
-                <td>{{prod.title}}</td>
-                <td>{{prod.image}}</td>
-                <td>{{prod.price}}</td>
-                <td>{{prod.descritption}}</td>
-                <td>{{prod.categoria}}
+            <thead>
+                <tr>
+                    <th>ID producto</th>
+                    <th>Nombre</th>
+                    <th>Imagen</th>
+                    <th>Precio</th>
+                    <th>Descripción</th>
+                    <th>categoria</th>
+                    <th scope="col">Modificar</th>
+                    <th scope="col">Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for prod in productos %}
+                    <td>{{prod.idProducto}}</td>
+                    <td>{{prod.title}}</td>
+                    <td>{{prod.image}}</td>
+                    <td>{{prod.price}}</td>
+                    <td>{{prod.descritption}}</td>
+                    <td>{{prod.categoria}}</td>
                     <td>
-                        <a href="{% url 'ven_mod_product' prod.idProducto %}">
-                            <img src="{% static 'venta/img/modificar.png' %}" alt="mod">
-                        </a>
+                        <a href="{% url 'ven_mod_product' prod.idProducto %}"><img src="{% static 'venta/img/modificar.png' %}" alt=""></a>
                     </td>
                     <td>
-                        <a href="{% url 'ven_del_product' prod.idProducto %}">
-                            <img src="{% static 'venta/img/borrar.png' %}" alt="del">
-                        </a>
+                        <a href="{% url 'ven_del_product' prod.idProducto %}"><img src="{% static 'venta/img/borrar.png' %}" alt=""></a>
                     </td>
-            </tr>
-            {% endfor %}
+                    {% endfor %}
+                </tr>
+            </tbody>
         </table>
-
-        <div>
-            {% if request.user.is_authenticated and user.username == "admin" %}
-            <a class="mas" href="{% url 'ven_product' %}">+</a> {% endif %}
-        </div>
-        <div>
-            <a href="{% url 'lista_productos' %}">API</a>
-        </div>
+        <div><a class="mas" href="{% url 'ven_product' %}"> Agregar + </a></div>
+        <div><a href="{% url 'lista_productos' %}"> API clic!</a></div>
 
         <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    <h4>Lista de la API</h4>
-                </div>
-                <div class="col-md-6">
-                    <button type="button" id="buscarProductos">Buscador</button>
-                </div>
-                <div class="col-md-6">
-                    <p id="fecha"></p>
-                </div>
+            <div class="col-md-6">
+                <h4>Lista de la API</h4>
+            </div>
+            <div class="col-md-6">
+                <button type="button" id="buscarProductos">Buscador</button>
             </div>
         </div>
 
@@ -252,37 +240,20 @@
 
     <!-- Javascript -->
     <script src="{% static 'venta/js/main.js' %}"></script>
-
     <script>
         $(document).ready(function() {
             $.getJSON('http://127.0.0.1:8000/api/lista-productos', function(data) {
                 var productos = data;
-                var today = new Date();
-                var dd = today.getDate();
-                var mm = today.getMonth() + 1; //January is 0!
-                var yyyy = today.getFullYear();
-                if (dd < 10) {
-                    dd = '0' + dd;
-                }
-                if (mm < 10) {
-                    mm = '0' + mm;
-                }
 
-                today = dd + '/' + mm + '/' + yyyy;
-
-                $('#fecha').html(today);
                 $.each(productos, function(i, item) {
                     $('#productos').append("<tr><td>" + item.idProducto + "</td><td>" + item.title + "</td><td>" + item.image + "</td><td>" + item.price + "</td><td>" + item.descritption + "</td><td>" + item.categoria + "</td></td>");
                 });
 
-
             }).fail(function() {
                 console.log('Error al consumir la API!');
             });
-
         });
     </script>
-
 </body>
 
 </html>

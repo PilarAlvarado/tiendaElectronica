@@ -258,20 +258,7 @@ $(document).ready(function() {
     $.getJSON("http://127.0.0.1:8000/api/lista-productos", function(data) {
         console.log(data);
         var productos = data;
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //January is 0!
-        var yyyy = today.getFullYear();
-        if (dd < 10) {
-            dd = "0" + dd;
-        }
-        if (mm < 10) {
-            mm = "0" + mm;
-        }
 
-        today = dd + "/" + mm + "/" + yyyy;
-
-        $("#fecha").html(today);
         $("#idProducto").html(productos.idProducto);
         $("#title").html(productos.title);
         $("#image").html(productos.image);

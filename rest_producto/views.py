@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
-@permission_classes((IsAuthenticated,))
+# @permission_classes((IsAuthenticated,))
 def lista_productos(request):
     if request.method == 'GET':
         producto = ProductoP.objects.all()
