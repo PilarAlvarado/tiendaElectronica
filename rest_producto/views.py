@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from venta.models import ProductoP
 from .serializers import ProductoPSerializer
+
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 @csrf_exempt
@@ -26,6 +29,7 @@ def lista_productos(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes((IsAuthenticated,))
 def detalle_producto(request, id):
     try:
         producto = ProductoP.objects.get(idProducto=id)

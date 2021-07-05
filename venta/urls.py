@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import home, cart, category, checkout, contact, login, account, productDet, productList, ven_mod_product, ven_product, ven_del_product, viewAdmin, wishlist
+from venta.views import home, cart, category, checkout, contact, login, account, productDet, productList, ven_mod_product, ven_product, ven_del_product, viewAdmin, wishlist
 
 urlpatterns = [
     path('', home, name='home'),

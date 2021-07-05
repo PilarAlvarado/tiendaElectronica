@@ -67,6 +67,7 @@ def ven_product(request):
 
 def ven_mod_product(request, id):
     product = ProductoP.objects.get(Idproducto=id)
+
     datos = {
         'ven': ProductForm(instance=product)
     }

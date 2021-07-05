@@ -123,10 +123,34 @@
 
         </table>
         <div>
-            <a class="mas" href="{% url 'ven_product' %}">+</a>
+            {% if request.user.is_authenticated and user.username == "admin" %}
+            <a class="mas" href="{% url 'ven_product' %}">+</a> {% endif %}
         </div>
         <div>
             <a href="{% url 'lista_productos' %}">API</a>
+        </div>
+        <div>
+            <h3>Lista de la API</h3>
+        </div>
+        <div><button type="button" id="buscarProductos">Buscar</button></div>
+        <div>
+            <br>
+            <p id="fecha"></p><br>
+        </div>
+        <div class="row">
+            <table class="table" id="productos">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Categoría</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+
+            </table>
         </div>
     </section>
 
@@ -212,8 +236,40 @@
     <script src="{% static 'venta/lib/easing/easing.min.js' %}"></script>
     <script src="{% static 'venta/lib/slick/slick.min.js' %}"></script>
 
+
     <!-- Javascript -->
     <script src="{% static 'venta/js/main.js' %}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $.getJSON('http://127.0.0.1:8000/api/lista-productos', function(data) {
+                var productos = data;
+                var today = new Date();
+                var dd = today.getDate();
+                var mm = today.getMonth() + 1; //January is 0!
+                var yyyy = today.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd;
+                }
+                if (mm < 10) {
+                    mm = '0' + mm;
+                }
+
+                today = dd + '/' + mm + '/' + yyyy;
+
+                $('#fecha').html(today);
+                $.each(productos, function(i, item) {
+                    $('#productos').append("<tr><td>" + item.idProducto + "</td><td>" + item.title + "</td><td>" + item.image + "</td><td>" + item.price + "</td><td>" + item.descritption + "</td><td>" + item.categoria + "</td></td>");
+                });
+
+
+            }).fail(function() {
+                console.log('Error al consumir la API!');
+            });
+
+        });
+    </script>
+
 </body>
 
 </html>
